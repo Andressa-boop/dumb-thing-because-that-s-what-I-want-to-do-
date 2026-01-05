@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Não se acostuma não em</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      cursor: pointer;
+    }
+
+    #loading {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .bar {
+      width: 100%;
+      height: 14px;
+      background: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      transition: width 0.3s;
+    }
+
+    #percent {
+      font-size: 12px;
+      margin-top: 8px;
+      color: #777;
+    }
+
+    /* susto */
+    #scare {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: black;
+      z-index: 9999;
+    }
+
+    #scare img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(#ffd6e8, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* ====== TELA FOFA ====== */
+.container {
+  text-align: center;
+  animation: shake 0.15s infinite;
+  animation-play-state: paused;
+}
+
+h1 {
+  color: #ff5d8f;
+  margin-bottom: 10px;
+}
+
+/* ====== COELHINHO ====== */
+.bunny {
+  position: relative;
+  width: 160px;
+  height: 200px;
+  margin: 0 auto 20px;
+}
+
+/* orelhas */
+.ear {
+  width: 40px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -60px;
+}
+.ear.left { left: 20px; }
+.ear.right { right: 20px; }
+
+/* cabeça */
+.head {
+  width: 160px;
+  height: 140px;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* olhos */
+.eye {
+  width: 20px;
+  height: 20px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  transition: transform 0.1s;
+}
+.eye.left { left: 45px; }
+.eye.right { right: 45px; }
+
+/* piscada */
+.eye::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: white;
+  animation: blink 2s infinite;
+}
+
+/* nariz */
+.nose {
+  width: 10px;
+  height: 10px;
+  background: pink;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* camisa do Vasco */
+.shirt {
+  width: 160px;
+  height: 60px;
+  margin-top: -10px;
+  background: repeating-linear-gradient(
+    30deg,
+    black 0px,
+    black 10px,
+    white 10px,
+    white 20px
+  );
+  animation: moveShirt 1s linear infinite;
+  border-radius: 10 200 5px 50px;
+}
+
+/* ====== LOADING ====== */
+.bar {
+  width: 200px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.progress {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, #ff5d8f, #ffc2d1);
+  animation: load 20s linear forwards;
+  
+}
+
+/* ====== SUSTO ====== */
+.scare {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 999;
+}
+
+.scare video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+
+/* ====== ANIMAÇÕES ====== */
+@keyframes load {
+  to { width: 300%; }
+}
+
+@keyframes blink {
+  0%, 95%, 100% { height: 0; }
+  96%, 99% { height: 100%; }
+}
+
+@keyframes moveShirt {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
+}
+
+@keyframes shake {
+  0% { transform: translate(0); }
+  25% { transform: translate(-4px, 4px); }
+  50% { transform: translate(4px, -4px); }
+  75% { transform: translate(-4px, -4px); }
+  100% { transform: translate(4px, 10px); }
+}
+</style>
+</head>
+<body>
+    <audio src="Acid Jazz - Kevin MacLeod.mp3" controls autoplay></audio>
+
+
+<div class="container" id="cute">
+  <h1>Espero que goste, Gigima, É para animar seu dia🐰</h1>
+  <P> Sim, ele está de "camisa"</P>
+  <p> E sim, são as cores do Vasco</p>
+  <p> Vamos todos cantar de coração
+A Cruz de Malta é o meu pendão
+Tu tens o nome do heroico português
+Vasco da Gama, a tua fama assim se fez e pipipiopopoo</p> 
+<p>
+    <p> vasco</p>
+
+</p>
+  <div class="bunny">
+    <div class="ear left"></div>
+    <div class="ear right"></div>
+
+    <div class="head">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="nose"></div>
+    </div>
+
+    <div class="shirt"></div>
+  </div>
+
+  <div class="bar">
+    <div class="progress"></div>
+  </div>
+</div>
+
+<!-- SUSTO -->
+<div class="scare" id="scare">
+<img src="vasco.jpeg" alt="">
+<script>
+const eyes = document.querySelectorAll('.eye');
+const container = document.getElementById('cute');
+
+// ativa tremida + susto
+setTimeout(() => {
+  container.style.animationPlayState = 'running';
+}, 4500);
+
+setTimeout(() => {
+  container.style.display = 'none';
+  document.getElementById('scare').style.display = 'block';
+}, 6000);
+</script>
+
+</body>
